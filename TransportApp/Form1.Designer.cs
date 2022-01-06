@@ -127,6 +127,8 @@
             // 
             // gridAbfahrten
             // 
+            this.gridAbfahrten.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gridAbfahrten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridAbfahrten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Gleis,
@@ -160,35 +162,35 @@
             // 
             // Gleis
             // 
+            this.Gleis.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Gleis.HeaderText = "Gleis";
             this.Gleis.MinimumWidth = 6;
             this.Gleis.Name = "Gleis";
             this.Gleis.ReadOnly = true;
-            this.Gleis.Width = 125;
             // 
             // Abfahrt
             // 
+            this.Abfahrt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Abfahrt.HeaderText = "Abfahrt";
             this.Abfahrt.MinimumWidth = 6;
             this.Abfahrt.Name = "Abfahrt";
             this.Abfahrt.ReadOnly = true;
-            this.Abfahrt.Width = 125;
             // 
             // Ankunft
             // 
+            this.Ankunft.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Ankunft.HeaderText = "Ankunft";
             this.Ankunft.MinimumWidth = 6;
             this.Ankunft.Name = "Ankunft";
             this.Ankunft.ReadOnly = true;
-            this.Ankunft.Width = 125;
             // 
             // Dauer
             // 
+            this.Dauer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Dauer.HeaderText = "Dauer";
             this.Dauer.MinimumWidth = 6;
             this.Dauer.Name = "Dauer";
             this.Dauer.ReadOnly = true;
-            this.Dauer.Width = 125;
             // 
             // Form1
             // 
