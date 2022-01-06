@@ -6,5 +6,10 @@ namespace TransportApp
         {
             InitializeComponent();
         }
+
+        private void btnSuchen_Click(object sender, EventArgs e)
+        {
+            var transport = new SwissTransport.Core.Transport();
+        }
     }
 }
