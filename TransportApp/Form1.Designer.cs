@@ -146,7 +146,7 @@
             this.btnMailSenden.Name = "btnMailSenden";
             this.btnMailSenden.Size = new System.Drawing.Size(242, 29);
             this.btnMailSenden.TabIndex = 12;
-            this.btnMailSenden.Text = "button1";
+            this.btnMailSenden.Text = "Per Mail versenden";
             this.btnMailSenden.UseVisualStyleBackColor = true;
             // 
             // Form1
