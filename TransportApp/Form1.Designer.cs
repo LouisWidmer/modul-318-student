@@ -40,6 +40,10 @@
             this.gridAbfahrten = new System.Windows.Forms.DataGridView();
             this.btnAufKarteAnzeigen = new System.Windows.Forms.Button();
             this.btnMailSenden = new System.Windows.Forms.Button();
+            this.Gleis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Abfahrt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ankunft = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dauer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridAbfahrten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -124,6 +128,11 @@
             // gridAbfahrten
             // 
             this.gridAbfahrten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridAbfahrten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Gleis,
+            this.Abfahrt,
+            this.Ankunft,
+            this.Dauer});
             this.gridAbfahrten.Location = new System.Drawing.Point(37, 121);
             this.gridAbfahrten.Name = "gridAbfahrten";
             this.gridAbfahrten.RowHeadersWidth = 51;
@@ -148,6 +157,38 @@
             this.btnMailSenden.TabIndex = 12;
             this.btnMailSenden.Text = "Per Mail versenden";
             this.btnMailSenden.UseVisualStyleBackColor = true;
+            // 
+            // Gleis
+            // 
+            this.Gleis.HeaderText = "Gleis";
+            this.Gleis.MinimumWidth = 6;
+            this.Gleis.Name = "Gleis";
+            this.Gleis.ReadOnly = true;
+            this.Gleis.Width = 125;
+            // 
+            // Abfahrt
+            // 
+            this.Abfahrt.HeaderText = "Abfahrt";
+            this.Abfahrt.MinimumWidth = 6;
+            this.Abfahrt.Name = "Abfahrt";
+            this.Abfahrt.ReadOnly = true;
+            this.Abfahrt.Width = 125;
+            // 
+            // Ankunft
+            // 
+            this.Ankunft.HeaderText = "Ankunft";
+            this.Ankunft.MinimumWidth = 6;
+            this.Ankunft.Name = "Ankunft";
+            this.Ankunft.ReadOnly = true;
+            this.Ankunft.Width = 125;
+            // 
+            // Dauer
+            // 
+            this.Dauer.HeaderText = "Dauer";
+            this.Dauer.MinimumWidth = 6;
+            this.Dauer.Name = "Dauer";
+            this.Dauer.ReadOnly = true;
+            this.Dauer.Width = 125;
             // 
             // Form1
             // 
@@ -188,5 +229,9 @@
         private DataGridView gridAbfahrten;
         private Button btnAufKarteAnzeigen;
         private Button btnMailSenden;
+        private DataGridViewTextBoxColumn Gleis;
+        private DataGridViewTextBoxColumn Abfahrt;
+        private DataGridViewTextBoxColumn Ankunft;
+        private DataGridViewTextBoxColumn Dauer;
     }
 }
