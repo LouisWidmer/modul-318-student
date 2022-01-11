@@ -9,7 +9,8 @@ namespace TransportApp
 
         private void btnSuchen_Click(object sender, EventArgs e)
         {
-            var transport = new SwissTransport.Core.Transport();
+            SwissTransport.Core.ITransport transport = new SwissTransport.Core.Transport();
+            transport.GetStations("Luzern");
         }
     }
 }
