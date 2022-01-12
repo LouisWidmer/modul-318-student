@@ -76,6 +76,32 @@
                 .GetAwaiter()
                 .GetResult();
 
+        public async Task<Connections> GetConnectionsWithTimeAsync(string fromStation, string toStation, DateTime dateTime)
+        {
+            if (string.IsNullOrEmpty(fromStation))
+            {
+                throw new ArgumentNullException(nameof(fromStation));
+            }
+
+            if (string.IsNullOrEmpty(toStation))
+            {
+                throw new ArgumentNullException(nameof(toStation));
+            }
+
+            string date = dateTime.ToString("yyyy-MM-dd");
+            string time = dateTime.ToString("HH:mm");
+
+            var uri = new Uri($"{WebApiHost}connections?from={fromStation}&to={toStation}&date={date}&time={time}");
+            return await this.GetObjectAsync<Connections>(uri)
+                .ConfigureAwait(false);
+        }
+
+        public Connections GetConnectionsWithTime(string fromStation, string toStation, DateTime dateTime) =>
+            this.GetConnectionsWithTimeAsync(fromStation, toStation, dateTime)
+                .ConfigureAwait(false)
+                .GetAwaiter()
+                .GetResult();
+
         public void Dispose()
         {
             this.httpClient?.Dispose();

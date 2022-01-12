@@ -1,3 +1,6 @@
+using SwissTransport.Core;
+using SwissTransport.Models;
+
 namespace TransportApp
 {
     public partial class Form1 : Form
@@ -10,12 +13,23 @@ namespace TransportApp
         private void btnSuchen_Click(object sender, EventArgs e)
         {
             gridAbfahrten.Rows.Clear();
-            SwissTransport.Core.ITransport transport = new SwissTransport.Core.Transport();
+            ITransport transport = new Transport();
             if (combVon.Text.Length >= 3)
             {
+                DateTime dateTime;
+                try
+                {
+                    string dateTimeString = datePicker.Value.ToString("yyyy-MM-dd ") + txtTime.Text;
+                    dateTime = DateTime.Parse(dateTimeString);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("ungültiges Datum");
+                    return;
+                }
                 if (combNach.Text == "")
                 {
-                    SwissTransport.Models.StationBoardRoot stationBoardRoot;
+                    StationBoardRoot stationBoardRoot;
                     stationBoardRoot = transport.GetStationBoard(combVon.Text, "0");
                     gridAbfahrten.Hide();
                     gridStationBoard.Show();
@@ -31,8 +45,15 @@ namespace TransportApp
                 }
                 else
                 {
-                    SwissTransport.Models.Connections connections = new SwissTransport.Models.Connections();
-                    connections = transport.GetConnections(combVon.Text, combNach.Text);
+                    Connections connections = new Connections();
+                    if (dateTime > DateTime.Now)
+                    {
+                        connections = transport.GetConnectionsWithTime(combVon.Text, combNach.Text, dateTime);
+                    }
+                    else
+                    {
+                        connections = transport.GetConnections(combVon.Text, combNach.Text);
+                    }
                     gridStationBoard.Hide();
                     gridAbfahrten.Show();
                     for (int i = 0; i < connections.ConnectionList.Count; i++)
@@ -55,8 +76,8 @@ namespace TransportApp
             {
                 combVon.Items.Clear();
                 combVon.Items.Add(combVon.Text);
-                SwissTransport.Core.ITransport transport = new SwissTransport.Core.Transport();
-                SwissTransport.Models.Stations stations = new SwissTransport.Models.Stations();
+                ITransport transport = new Transport();
+                Stations stations = new Stations();
                 stations = transport.GetStations(combVon.Text);
                 for (int i = 0; i < stations.StationList.Count; i++)
                 {
@@ -71,8 +92,8 @@ namespace TransportApp
             {
                 combNach.Items.Clear();
                 combNach.Items.Add(combNach.Text);
-                SwissTransport.Core.ITransport transport = new SwissTransport.Core.Transport();
-                SwissTransport.Models.Stations stations = new SwissTransport.Models.Stations();
+                ITransport transport = new Transport();
+                Stations stations = new Stations();
                 stations = transport.GetStations(combNach.Text);
                 for (int i = 0; i < stations.StationList.Count; i++)
                 {
@@ -81,15 +102,12 @@ namespace TransportApp
             }
         }
 
-        private void btnNachsteStation_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
-            gridAbfahrten.Hide();
+            gridAbfahrten.Show();
             gridStationBoard.Hide();
+            datePicker.Text = DateTime.Now.ToString();
+            txtTime.Text = DateTime.Now.ToString("HH:mm");
         }
     }
 }
